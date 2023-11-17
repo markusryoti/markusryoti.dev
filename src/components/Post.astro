@@ -1,0 +1,9 @@
+---
+const { url, title, description, date } = Astro.props;
+---
+
+<li class="py-4 px-4">
+	<a href={url} class="text-lg font-bold">{title}</a>
+	<p>{date}</p>
+	<p>{description}</p>
+</li>

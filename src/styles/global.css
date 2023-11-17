@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	h1 {
+		@apply text-3xl;
+		padding: 1rem 0;
+	}
+
+	h2 {
+		@apply text-2xl;
+		padding: 1rem 0;
+	}
+
+	h3 {
+		@apply text-xl;
+		padding: 1rem 0;
+	}
+
+	h4 {
+		@apply text-lg;
+		padding: 1rem 0;
+	}
+
+	p {
+		padding: 0.5rem 0;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	margin: 0 auto;
+}
+
+code {
+	background-color: #24292e;
+	padding: 0.25rem;
+	border-radius: 0.5rem;
+}
+
+pre.astro-code {
+	border-radius: 1rem;
+	padding: 1rem;
+	margin: 1rem 0;
+}

@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import myImportedImage from '../images/IMG_4261.jpeg';
 ---
 
 <section class="bg-white dark:bg-neutral-800 pt-4 pb-8 flex-1 flex">
@@ -38,9 +37,9 @@ import myImportedImage from '../images/IMG_4261.jpeg';
 		<div class="flex flex-1 justify-center items-center">
 			<div>
 				<Image
-					src={myImportedImage}
+					src="/images/IMG_4261.jpeg"
 					alt="portrait"
-					class="rounded-lg grayscale"
+					class="rounded-lg grayscale text-white"
 					width="400"
 					height="200"
 				/>

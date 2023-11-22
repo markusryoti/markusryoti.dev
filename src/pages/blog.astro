@@ -5,9 +5,10 @@ import Post from '../components/Post.astro';
 
 const allPosts = await getCollection('posts');
 const pageTitle = 'Markus Ryöti | Blog';
+const metaDescription = 'Markus Ryöti - Blog';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} metaDescription={metaDescription}>
 	<div class="flex-1 bg-neutral-800">
 		<div class="container mx-auto flex flex-col px-4 text-white">
 			<h1 class="font-bold py-6 px-4">My blog posts</h1>

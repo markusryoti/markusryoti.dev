@@ -1,6 +1,25 @@
 ---
+interface Props {
+	frontmatter: {
+		title: string;
+		pubDate: Date;
+		editDate?: Date;
+		description: string;
+		author: string;
+		image?: {
+			url: string;
+			alt: string;
+			originalPhotographerName?: string;
+			originalLink?: string;
+		};
+		tags: string[];
+	};
+}
+
+import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
+const images = import.meta.glob('/src/assets/images/*.{jpeg,jpg,png,gif}');
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -8,18 +27,32 @@ const { frontmatter } = Astro.props;
 		<div class="container mx-auto py-8 px-4">
 			<div class="py-4">
 				<h1 class="font-bold text-3xl">{frontmatter.title}</h1>
-				<p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-				<p>
-					<em>{frontmatter.description}</em>
+				<p class="text-lg italic">
+					{frontmatter.description}
 				</p>
+				<p class="font-bold">{frontmatter.pubDate.toString().slice(4, 15)}</p>
 				<p>Written by: {frontmatter.author}</p>
-				<div class="pt-2">
-					<img
-						src={frontmatter.image.url}
-						width="300"
-						alt={frontmatter.image.alt}
-					/>
-				</div>
+				{
+					frontmatter.image && (
+						<div class="pt-2">
+							<Image
+								src={images[frontmatter.image.url]()}
+								width={300}
+								height={300}
+								alt={frontmatter.image.alt}
+							/>
+							{frontmatter.image.originalPhotographerName &&
+								frontmatter.image.originalLink && (
+									<p>
+										Photo by{' '}
+										<a href={frontmatter.image.originalLink} class="underline">
+											{frontmatter.image.originalPhotographerName}
+										</a>
+									</p>
+								)}
+						</div>
+					)
+				}
 			</div>
 
 			<hr class="my-4" />
@@ -33,7 +66,7 @@ const { frontmatter } = Astro.props;
 				<div class="flex flex-wrap">
 					{
 						frontmatter.tags.map((tag: any) => (
-							<p class="flex items-center p-2 m-2 bg-red-500 rounded-xl font-medium">
+							<p class="flex items-center p-2 mr-2 bg-red-500 rounded-xl font-medium">
 								<a href={`/tags/${tag}`} class="block text-white">
 									{tag}
 								</a>

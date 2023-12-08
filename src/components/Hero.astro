@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import heroImg from '../assets/images/IMG_4261.jpeg';
 ---
 
 <section class="bg-white dark:bg-neutral-800 pt-4 pb-8 flex-1 flex">
@@ -37,7 +38,7 @@ import { Image } from 'astro:assets';
 		<div class="flex flex-1 justify-center items-center">
 			<div>
 				<Image
-					src="/images/IMG_4261.jpeg"
+					src={heroImg}
 					alt="portrait"
 					class="rounded-lg grayscale text-white"
 					width="400"

@@ -18,6 +18,7 @@ interface Props {
 
 import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
+
 const { frontmatter } = Astro.props;
 const images = import.meta.glob('/src/assets/images/*.{jpeg,jpg,png,gif}');
 ---
@@ -66,11 +67,11 @@ const images = import.meta.glob('/src/assets/images/*.{jpeg,jpg,png,gif}');
 				<div class="flex flex-wrap">
 					{
 						frontmatter.tags.map((tag: any) => (
-							<p class="flex items-center p-2 mr-2 bg-red-500 rounded-xl font-medium">
+							<div class="flex items-center p-2 mr-2 bg-red-500 rounded-xl font-medium">
 								<a href={`/tags/${tag}`} class="block text-white">
 									{tag}
 								</a>
-							</p>
+							</div>
 						))
 					}
 				</div>

@@ -53,3 +53,7 @@ blockquote {
 	margin: 1rem 10px;
 	padding: 1rem 1rem;
 }
+
+p > a {
+	text-decoration: underline;
+}

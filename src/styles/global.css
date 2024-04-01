@@ -36,6 +36,14 @@ html {
 	margin: 0 auto;
 }
 
+body {
+	line-height: 1.6;
+}
+
+p {
+	max-width: 70ch;
+}
+
 code {
 	background-color: #24292e;
 	padding: 0.25rem;

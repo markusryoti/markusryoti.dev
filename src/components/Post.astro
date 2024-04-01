@@ -2,8 +2,8 @@
 const { url, title, description, date } = Astro.props;
 ---
 
-<li class="py-4 px-4">
+<li class="py-8 px-4">
 	<a href={url} class="text-lg font-bold">{title}</a>
 	<p>{description}</p>
-	<p>{date}</p>
+	<p class="text-sm italic">{date}</p>
 </li>

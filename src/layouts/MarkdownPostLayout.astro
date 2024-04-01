@@ -31,7 +31,9 @@ const images = import.meta.glob('/src/assets/images/*.{jpeg,jpg,png,gif}');
 				<p class="text-lg italic">
 					{frontmatter.description}
 				</p>
-				<p class="font-bold">{frontmatter.pubDate.toString().slice(4, 15)}</p>
+				<p class="font-bold text-sm">
+					{frontmatter.pubDate.toString().slice(4, 15)}
+				</p>
 				<p>Written by: {frontmatter.author}</p>
 				{
 					frontmatter.image && (

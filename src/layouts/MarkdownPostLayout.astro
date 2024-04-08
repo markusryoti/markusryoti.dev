@@ -24,8 +24,8 @@ const images = import.meta.glob('/src/assets/images/*.{jpeg,jpg,png,gif}');
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-	<div class="flex-1 bg-neutral-800 text-white">
-		<div class="container mx-auto py-8 px-8">
+	<div class="flex-1 bg-background text-white">
+		<div class="container mx-auto py-8 px-8 md:flex flex-col items-center">
 			<div class="py-4">
 				<h1 class="font-bold text-3xl">{frontmatter.title}</h1>
 				<p class="text-lg italic">
@@ -60,7 +60,7 @@ const images = import.meta.glob('/src/assets/images/*.{jpeg,jpg,png,gif}');
 
 			<hr class="my-4" />
 
-			<div class="py-4">
+			<div class="py-4 md:flex flex-col">
 				<slot />
 			</div>
 

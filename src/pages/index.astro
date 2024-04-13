@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import Skills from '../components/Skills.astro';
+import BlogAction from '../components/BlogAction.astro';
+import Connect from '../components/Connect.astro';
 
 const pageTitle = 'Markus Ryöti | Home';
 const metaDescription = 'Markus Ryöti - Software Engineering consultant';
@@ -8,4 +11,9 @@ const metaDescription = 'Markus Ryöti - Software Engineering consultant';
 
 <BaseLayout pageTitle={pageTitle} metaDescription={metaDescription}>
 	<Hero />
+	<Skills />
+	<div class="md:flex py-20 md:py-40 bg-background">
+		<BlogAction />
+		<Connect />
+	</div>
 </BaseLayout>

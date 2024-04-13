@@ -1,50 +1,32 @@
 ---
 import { Image } from 'astro:assets';
 import heroImg from '../assets/images/IMG_4261.jpeg';
+import Button from './Button.astro';
 ---
 
-<section class="bg-white dark:bg-neutral-800 pt-4 pb-8 flex-1 flex">
+<section class="md:flex bg-background pt-4 pb-8 h-screen">
 	<div
-		class="flex flex-wrap flex-col-reverse md:flex-row md:flex-nowrap mx-auto px-8 py-8"
+		class="flex flex-wrap flex-col-reverse md:flex-row md:flex-nowrap md:justify-center md:items-center mx-auto md:py-8"
 	>
-		<div class="flex flex-1 justify-center flex-col p-4">
-			<h1
-				class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"
-			>
-				software development and stuff
-			</h1>
-			<p
-				class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
-			>
-				I like to code
-			</p>
-			<a
-				href="/about"
-				class="inline-flex items-center justify-center px-5 py-3 mr-3 w-48 text-base font-medium text-center text-white rounded-lg bg-red-500 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
-			>
-				Who am I?
-				<svg
-					class="w-5 h-5 ml-2 -mr-1"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg"
-					><path
-						fill-rule="evenodd"
-						d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-						clip-rule="evenodd"></path></svg
-				>
-			</a>
-		</div>
-		<div class="flex flex-1 justify-center items-center">
-			<div>
-				<Image
-					src={heroImg}
-					alt="portrait"
-					class="rounded-lg grayscale text-white"
-					width="400"
-					height="200"
-				/>
+		<div class="flex justify-center items-center flex-col p-4">
+			<div class="flex flex-col items-center pb-2 pt-0">
+				<h1 class="text-4xl text-brandwhite">Hi!</h1>
+				<p class="text-center text-accentlight">
+					I'm Markus, a fullstack software consultant
+				</p>
 			</div>
+			<Button className="mt-2">
+				<a href="/about">My Story</a>
+			</Button>
+		</div>
+		<div class="flex justify-center items-center">
+			<Image
+				src={heroImg}
+				alt="portrait"
+				width="600"
+				height="600"
+				class="h-96 w-auto md:h-full md:rounded-2xl grayscale text-brandwhite"
+			/>
 		</div>
 	</div>
 </section>

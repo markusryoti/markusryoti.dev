@@ -2,3 +2,9 @@
 
 root * /srv
 file_server
+
+log {
+  format json {
+
+  }
+}

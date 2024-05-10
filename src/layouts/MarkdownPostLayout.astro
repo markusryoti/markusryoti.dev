@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 interface Props {
 	frontmatter: {
 		title: string;
@@ -16,11 +18,27 @@ interface Props {
 	};
 }
 
+import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+
 import BaseLayout from './BaseLayout.astro';
 
 const { frontmatter } = Astro.props;
-const images = import.meta.glob('/src/assets/images/*.{jpeg,jpg,png,gif}');
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+	'/src/assets/images/*.{jpeg,jpg,png,gif}'
+);
+
+let imagePath;
+
+if (frontmatter.image) {
+	imagePath = images[frontmatter.image?.url];
+
+	if (!imagePath)
+		throw new Error(
+			`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+		);
+}
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>

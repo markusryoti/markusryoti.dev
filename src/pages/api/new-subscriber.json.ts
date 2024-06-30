@@ -9,7 +9,7 @@ export async function POST({ request }: { request: Request }) {
 
   return new Response(
     JSON.stringify({
-      message: "Got request ",
+      body,
     }),
     {
       status: 200,

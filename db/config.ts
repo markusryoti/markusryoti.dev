@@ -7,6 +7,16 @@ const Users = defineTable({
   },
 });
 
+const Inquiries = defineTable({
+  columns: {
+    id: column.text({ unique: true, primaryKey: true }),
+    email: column.text(),
+    subject: column.text(),
+    message: column.text(),
+    createdAt: column.date({ default: NOW }),
+  },
+});
+
 export default defineDb({
-  tables: { Users },
+  tables: { Users, Inquiries },
 });

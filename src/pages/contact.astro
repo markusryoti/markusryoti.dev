@@ -1,0 +1,75 @@
+---
+import { db, Inquiries } from "astro:db";
+import Button from "../components/Button.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Markus Ryöti | Contact";
+const metaDescription = "Markus Ryöti - Contact";
+
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+  const email = formData.get("email");
+  const subject = formData.get("subject");
+  const message = formData.get("message");
+
+  if (
+    typeof email === "string" &&
+    typeof subject === "string" &&
+    typeof message === "string"
+  ) {
+    try {
+      const id = crypto.randomUUID();
+      await db.insert(Inquiries).values({ id, email, subject, message });
+      return Astro.redirect("/contact-thank-you");
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+---
+
+<BaseLayout pageTitle={pageTitle} metaDescription={metaDescription}>
+  <div class="bg-background pb-20">
+    <div class="container mx-auto">
+      <form method="post" class="px-4 p-6 text-brandwhite">
+        <div class="flex flex-col items-center pb-8">
+          <h1 class="">Contact</h1>
+          <h3 class="text-accentlight">
+            Need help with your software project? Let's chat! Fill out the form
+            below and I'll get in touch to discuss your needs.
+          </h3>
+        </div>
+        <div class="flex flex-col gap-1 py-4">
+          <label for="email" class="text-gray-300">Email</label>
+          <input
+            name="email"
+            type="email"
+            placeholder="Your email"
+            class="w-full h-16 p-2 pl-4 rounded rounded-xl text-black"
+          />
+        </div>
+        <div class="flex flex-col gap-1 py-4">
+          <label for="subject" class="text-gray-300">Subject</label>
+          <input
+            name="subject"
+            type="text"
+            placeholder="How can I help?"
+            class="w-full h-16 p-2 pl-4 rounded rounded-xl text-black"
+          />
+        </div>
+        <div class="flex flex-col gap-1 py-4">
+          <label for="message" class="text-gray-300">Message</label>
+          <textarea
+            name="message"
+            id="message"
+            placeholder="Your message"
+            class="w-full h-[300px] p-2 pl-4 rounded rounded-xl text-black"
+          ></textarea>
+        </div>
+        <div class="flex justify-center py-8">
+          <Button> Send </Button>
+        </div>
+      </form>
+    </div>
+  </div>
+</BaseLayout>

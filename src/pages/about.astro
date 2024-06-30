@@ -1,57 +1,63 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from "../components/Button.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageTitle = 'Markus Ryöti | About Me';
-const metaDescription = 'Markus Ryöti - About Me';
+const pageTitle = "Markus Ryöti | About Me";
+const metaDescription = "Markus Ryöti - About Me";
 ---
 
 <BaseLayout pageTitle={pageTitle} metaDescription={metaDescription}>
-	<div class="flex-1 bg-background pb-20">
-		<div class="container mx-auto flex justify-center px-4 p-6 text-brandwhite">
-			<div>
-				<h1 class="pb-8">About Me</h1>
-				<p>
-					<em> Hello there!</em>
-				</p>
-				<p>
-					I'm a Software Engineer from Finland, more specifically Pirkanmaa
-					region. I work as a consultant in a small-sized firm. My work and
-					expertise mostly focuses on full-stack web development. Currently I
-					have mainly been working with Go, Typescript, React/React Native and
-					Angular. I have also done a fair amount of Python earlier. On my free
-					time I have been exploring with other stuff as well, for example Rust
-					and Sveltekit. A lot has happened in the web ecosystem in the past few
-					years related to different rendering strategies. Therefore things like
-					Next.js, Astro (which this site uses, yay!) and Remix are in my list
-					as well.
-				</p>
-				<p>
-					For the past two years I have worked on a security research project.
-					My main accomplishment has been building a fully-fledged test system
-					for running large scale e2e load tests. This has required a lot of
-					system design and both backend and frontend development. None of that
-					was completely new to me, but this has definitely boosted my
-					development skills. Before that I have worked on test automation for a
-					few years. I also did a machine learning related MSc thesis which was
-					definitely interesting as well.
-				</p>
-				<p>
-					Outside of programming I enjoy working out by mainly going to the gym
-					but also doing some running. Also this season I really fell in love
-					with skiing and can't wait to hit the slopes again. Some of my other
-					interests include but are not limited to cars, coffee, music,
-					movies/tv series and dogs. Other than that I like to spend time with
-					my family and friends as well.
-				</p>
-				<p class="pb-8">
-					I'm not looking for a job, but if you have an interesting (or not so
-					interesting) problem I would be interested in hearing about that. We
-					could then figure out if I would be able to give you a hand with that.
-					If that sounds good please don't hesitate to shoot me an email at:
-					<em>mryoti@gmail.com</em>
-					.
-				</p>
-			</div>
-		</div>
-	</div>
+  <div class="flex-1 bg-background pb-20">
+    <div class="container mx-auto flex justify-center px-4 p-6 text-brandwhite">
+      <section>
+        <h1 class="pb-8">About Me</h1>
+        <p>
+          <em> Hello there!</em>
+        </p>
+        <p>
+          I'm a Software Engineer from Finland, more specifically Pirkanmaa
+          region. I work as a consultant in a small-sized firm. My work and
+          expertise mostly focuses on full-stack web development. Currently I
+          have mainly been working with Go, Typescript, React/React Native and
+          Angular. I have also done a fair amount of Python earlier. On my free
+          time I have been exploring with other stuff as well, for example Rust
+          and Sveltekit. A lot has happened in the web ecosystem in the past few
+          years related to different rendering strategies. Therefore things like
+          Next.js, Astro (which this site uses, yay!) and Remix are in my list
+          as well.
+        </p>
+        <p>
+          For the past two years I have worked on a security research project.
+          My main accomplishment has been building a fully-fledged test system
+          for running large scale e2e load tests. This has required a lot of
+          system design and both backend and frontend development. None of that
+          was completely new to me, but this has definitely boosted my
+          development skills. Before that I have worked on test automation for a
+          few years. I also did a machine learning related MSc thesis which was
+          definitely interesting as well.
+        </p>
+        <p>
+          Outside of programming I enjoy working out by mainly going to the gym
+          but also doing some running. Also this season I really fell in love
+          with skiing and can't wait to hit the slopes again. Some of my other
+          interests include but are not limited to cars, coffee, music,
+          movies/tv series and dogs. Other than that I like to spend time with
+          my family and friends as well.
+        </p>
+        <p class="pb-8">
+          I'm not looking for a job, but if you have an interesting (or not so
+          interesting) problem I would be interested in hearing about that. We
+          could then figure out if I would be able to give you a hand with that.
+          If that sounds good please don't hesitate to shoot me an email at:
+          <em>mryoti@gmail.com</em>
+          .
+        </p>
+        <div class="py-8">
+          <Button>
+            <a href="/contact">Contact Me</a>
+          </Button>
+        </div>
+      </section>
+    </div>
+  </div>
 </BaseLayout>

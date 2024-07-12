@@ -28,7 +28,7 @@ if (Astro.request.method === "POST") {
 <BaseLayout pageTitle={pageTitle} metaDescription={metaDescription}>
   <Hero />
   <Skills />
-  <div class="md:flex py-20 md:pt-40 bg-background">
+  <div class="flex flex-col md:flex-row py-20 md:pt-40 bg-background gap-2">
     <BlogAction />
     <Connect />
   </div>

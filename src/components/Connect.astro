@@ -1,9 +1,10 @@
 ---
+import ActionCard from "./ActionCard.astro";
 import Button from "./Button.astro";
 ---
 
-<div class="flex-1 bg-background px-4 py-10">
-  <div class="flex flex-col items-center h-2/3">
+<ActionCard>
+  <div class="flex flex-col items-center h-2/3 px-8">
     <h3 class="text-3xl text-brandwhite">Let's connect</h3>
     <h4 class="text-2xl text-accentlight text-center">
       I'm not looking for a job, but I'm always willing to discuss about
@@ -15,4 +16,4 @@ import Button from "./Button.astro";
       <a href="/contact">Contact</a>
     </Button>
   </div>
-</div>
+</ActionCard>

@@ -4,6 +4,10 @@
 
 interface Window {
   posthog: {
+    opt_in_capturing(): void;
     opt_out_capturing(): void;
+    consent: {
+      isOptedIn(): boolean;
+    };
   };
 }

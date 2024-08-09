@@ -8,6 +8,7 @@ interface Window {
     opt_out_capturing(): void;
     consent: {
       isOptedIn(): boolean;
+      isOptedOut(): boolean;
     };
   };
 }

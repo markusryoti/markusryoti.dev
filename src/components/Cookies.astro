@@ -31,36 +31,46 @@
     cookiesAllowed: boolean;
   };
 
-  document.addEventListener("DOMContentLoaded", () => {
-    window.posthog.opt_out_capturing();
+  document.addEventListener("astro:page-load", () => {
+    addEventListeners();
+    handleCookieToast();
+  });
 
+  function addEventListeners() {
+    document
+      .querySelector("#cookie-accept-button")
+      ?.addEventListener("click", () => {
+        setCookiesAllowed(true);
+      });
+
+    document
+      .querySelector("#cookie-decline-button")
+      ?.addEventListener("click", () => {
+        setCookiesAllowed(false);
+      });
+  }
+
+  function handleCookieToast() {
     const consent = JSON.parse(
       localStorage.getItem("cookie-consent") ?? "null"
     ) as CookieConsentStore | null;
 
-    console.log("cookie consent set", consent);
+    if (!consent || !consent.consentSet) {
+      displayCookieToast();
+      return;
+    }
 
-    if (consent && consent.cookiesAllowed) {
+    if (consent.cookiesAllowed && window.posthog.consent.isOptedOut()) {
+      console.log("opting in to analytics");
       window.posthog.opt_in_capturing();
       return;
     }
 
-    if (!consent || !consent.consentSet) {
-      displayCookieToast();
+    if (!consent.cookiesAllowed && window.posthog.consent.isOptedIn()) {
+      console.log("opting out of analytics");
+      window.posthog.opt_out_capturing();
     }
-  });
-
-  document
-    .querySelector("#cookie-accept-button")
-    ?.addEventListener("click", () => {
-      setCookiesAllowed(true);
-    });
-
-  document
-    .querySelector("#cookie-decline-button")
-    ?.addEventListener("click", () => {
-      setCookiesAllowed(false);
-    });
+  }
 
   function setCookiesAllowed(allow: boolean) {
     const consent: CookieConsentStore = {

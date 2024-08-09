@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import PostHog from "../components/posthog.astro";
+import Cookies from "../components/Cookies.astro";
 
 const { pageTitle, metaDescription } = Astro.props;
 ---
@@ -16,6 +17,7 @@ const { pageTitle, metaDescription } = Astro.props;
     <ViewTransitions />
   </head>
   <body class="bg-background">
+    <Cookies />
     <div class="flex flex-col min-h-screen">
       <Header />
       <div class="flex-1 flex flex-col">

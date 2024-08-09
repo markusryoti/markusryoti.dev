@@ -1,0 +1,85 @@
+---
+
+---
+
+<div
+  id="cookie-consent"
+  class="fixed bottom-4 right-4 z-50 bg-slate-800 text-white p-4 rounded-lg shadow-md"
+  style="display: none;"
+>
+  <p>
+    We use cookies for visitor analytics <a
+      href="/privacy"
+      class="text-white underline">Learn more</a
+    >
+  </p>
+  <div class="flex space-x-4">
+    <button
+      class="bg-slate-300 text-slate-800 px-4 py-2 rounded-md"
+      id="cookie-accept-button">Accept</button
+    >
+    <button
+      class="bg-slate-600 text-white px-4 py-2 rounded-md"
+      id="cookie-decline-button">Decline</button
+    >
+  </div>
+</div>
+
+<script>
+  type CookieConsentStore = {
+    consentSet: boolean;
+    cookiesAllowed: boolean;
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const consent = JSON.parse(
+      localStorage.getItem("cookie-consent") ?? "null"
+    ) as CookieConsentStore;
+
+    console.log("cookie consent set", consent);
+
+    if (!consent || !consent.consentSet) {
+      displayCookieToast();
+    }
+  });
+
+  document
+    .querySelector("#cookie-accept-button")
+    ?.addEventListener("click", () => {
+      console.log("accepting");
+      setCookiesAllowed(true);
+      hideCookieToast();
+    });
+
+  document
+    .querySelector("#cookie-decline-button")
+    ?.addEventListener("click", () => {
+      console.log("declining");
+      setCookiesAllowed(false);
+      hideCookieToast();
+    });
+
+  function setCookiesAllowed(allow: boolean) {
+    const consent: CookieConsentStore = {
+      consentSet: true,
+      cookiesAllowed: allow,
+    };
+
+    // Disable analytics
+    window.posthog.opt_out_capturing();
+
+    localStorage.setItem("cookie-consent", JSON.stringify(consent));
+  }
+
+  function hideCookieToast() {
+    document
+      .querySelector("#cookie-consent")
+      ?.setAttribute("style", "display:none;");
+  }
+
+  function displayCookieToast() {
+    document
+      .querySelector("#cookie-consent")
+      ?.setAttribute("style", "display:block;");
+  }
+</script>

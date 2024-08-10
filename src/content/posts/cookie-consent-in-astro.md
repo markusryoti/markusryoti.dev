@@ -140,4 +140,4 @@ And that's it, now we are not violating our user's privacy!
 
 ## Conclusion
 
-This was a small walkthrough of how I created a custom cookie consent toast in my website. Please refer to my Github repo for the [full source code](https://github.com/markusryoti/markusryoti.dev/blob/fdb319ef28e9a635e395abe26ac4c217c2e72b3d/src/components/Cookies.astro)
+This was a small walkthrough of how I created a custom cookie consent toast in my website. Please refer to my Github repo for the [full source code](https://github.com/markusryoti/markusryoti.dev/blob/c368ee5e697f384248dc5bbbbceed9b693094a0d/src/components/Cookies.astro)

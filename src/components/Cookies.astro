@@ -33,7 +33,7 @@
 
   document.addEventListener("astro:page-load", () => {
     addEventListeners();
-    handleCookieToast();
+    handleCookiePreferences();
   });
 
   function addEventListeners() {
@@ -50,23 +50,24 @@
       });
   }
 
-  function handleCookieToast() {
+  function handleCookiePreferences() {
     const consent = JSON.parse(
       localStorage.getItem("cookie-consent") ?? "null"
     ) as CookieConsentStore | null;
 
     if (!consent || !consent.consentSet) {
+      window.posthog.opt_out_capturing();
       displayCookieToast();
       return;
     }
 
-    if (consent.cookiesAllowed && window.posthog.consent.isOptedOut()) {
+    if (consent.cookiesAllowed && window.posthog.has_opted_out_capturing()) {
       console.log("opting in to analytics");
       window.posthog.opt_in_capturing();
       return;
     }
 
-    if (!consent.cookiesAllowed && window.posthog.consent.isOptedIn()) {
+    if (!consent.cookiesAllowed && window.posthog.has_opted_in_capturing()) {
       console.log("opting out of analytics");
       window.posthog.opt_out_capturing();
     }
@@ -90,7 +91,10 @@
 
     hideCookieToast();
 
-    console.log("analytics opt in status", window.posthog.consent.isOptedIn());
+    console.log(
+      "analytics opt in status",
+      window.posthog.has_opted_in_capturing()
+    );
   }
 
   function hideCookieToast() {

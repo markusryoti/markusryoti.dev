@@ -1,6 +1,6 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
+import vercel from "@astrojs/vercel/serverless";
 
 import db from "@astrojs/db";
 
@@ -8,10 +8,6 @@ import db from "@astrojs/db";
 export default defineConfig({
   site: "https://markusryoti.dev",
   integrations: [tailwind(), db()],
-  output: 'server',
-  adapter: vercel({
-    webAnalytics: {
-      enabled: false
-    }
-  })
+  output: "hybrid",
+  adapter: vercel(),
 });
